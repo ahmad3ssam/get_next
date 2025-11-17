@@ -10,6 +10,8 @@ char	*ft_strdup(char *str, int len)
 		return (NULL);
 	i = 0;
 	array = (char *)malloc((len + 1) * sizeof(char));
+	if(!array)
+		return(NULL);
 	while (i < len)
 	{
 	    array[i] = str[i];
@@ -32,7 +34,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	len = len + ft_strlen(s1);
 	array = (char *)malloc(sizeof(char) * (len + 1));
 	if (!array)
-		return (NULL);
+		return (free_buf(&s1));
 	len = 0;
 	while (s1[i])
 		array[len++] = s1[i++];
@@ -81,3 +83,4 @@ char	*get_line(char **temp)
 	str = NULL;
 	return (line);
 }
+
