@@ -37,6 +37,8 @@ char	*get_next_line(int fd)
 		read_f = read(fd, buffer, BUFFER_SIZE);
 		buffer[read_f] = 0;
 		re_data = ft_strjoin(re_data, buffer);
+		if(!re_data)
+			break;
 	}
 	if (buffer)
 		free_buf(&buffer);
@@ -45,3 +47,4 @@ char	*get_next_line(int fd)
 	    free_buf(&re_data);
 	return (temp);
 }
+
